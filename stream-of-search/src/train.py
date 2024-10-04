@@ -36,7 +36,7 @@ def main(args):
     accelerator = Accelerator()
 
     if args.wandb and accelerator.is_main_process:
-        wandb.init(project="countdown-sft", name=config["name"], config=config)
+        wandb.init(project="countdown", name=config["name"], config=config)
 
     with open(config["model_config"], "r") as f:
         model_config = json.load(f)

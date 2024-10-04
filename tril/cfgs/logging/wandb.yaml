@@ -1,0 +1,5 @@
+# @package _global_
+
+log_to_wandb: true
+entity_name: null
+project_name: countdown

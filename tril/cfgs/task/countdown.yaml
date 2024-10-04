@@ -1,0 +1,30 @@
+# @package _global_
+
+task:
+  id: countdown
+  sep_token: "\n"
+
+sampling:
+  batch_size_per_process: 4
+  max_prompt_len: 17
+  max_gen_len: 4079
+  prompt_padding_side: right
+  prompt_truncation_side: right
+  context_padding_side: right
+  context_truncation_side: right
+  train_generation_kwargs:
+    do_sample: true
+    max_new_tokens: ${sampling.max_gen_len}
+    stop_strings: [Goal Reached, Exited]
+  eval_generation_kwargs:
+    do_sample: false
+    max_new_tokens: ${sampling.max_gen_len}
+    stop_strings: [Goal Reached, Exited]
+
+reward_fn:
+  id: countdown_reward
+  args:
+    reward_type: score
+
+eval_metrics:
+  - id: countdown
