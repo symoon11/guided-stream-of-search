@@ -1,6 +1,17 @@
 # Guided Stream of Search
 
-This is the code for the paper
+This is the code for the paper [Guided Stream of Search: Learning to Better Search with Language Models via Optimal Path Guidance]().
+
+<img src="figures/gsos.png" width="800">
+
+## Computational resources
+
+- Training: 4 x NVIDIA A100 80GB 
+- Inference: 1 x NVIDIA RTX 3090 24GB
+
+## Prerequisite
+
+The base directory is set to `/home/{user}/guided-stream-of-search`. All data, checkpoints, and other files will be stored under this base directory. Please update this path as needed before running the script.
 
 ## Environment settings
 
@@ -17,16 +28,6 @@ pip install flash-attn --no-build-isolation
 
 > [!NOTE]  
 > Please do not modify the package versions. Any changes may cause numerical instability as discussed in [this article](https://huggingface.co/blog/putting_rl_back_in_rlhf_with_rloo).
-
-## Computational resources
-
-- Training: 4 x NVIDIA A100 80GB 
-- Inference: 1 x NVIDIA RTX 3090
-
-## Prerequisite
-
-The base directory is set to `/home/{user}/guided-stream-of-search`. All data, checkpoints, and other files will be stored under this base directory. Please update this path as needed before running the script.
-
 
 ## Data generation
 
@@ -51,7 +52,7 @@ sh script/gpt2/train_sos.sh
 
 ## Supervised fine-tuning with self-generated data
 
-The data and checkpoints can be found in `/home/{user}/guided-stream-of-search/stream-of-search/output`
+The data and checkpoints can be found in `/home/{user}/guided-stream-of-search/stream-of-search/output`.
 
 ```bash
 conda activate countdown
@@ -82,7 +83,7 @@ sh script/gpt2/iter3/train_gsos_rand_s0.sh
 
 ## RL fine-tuning
 
-The checkpoints can be found in `/home/{user}/guided-stream-of-search/tril/output`
+The checkpoints can be found in `/home/{user}/guided-stream-of-search/tril/output`.
 
 ```bash
 conda activate countdown
@@ -92,7 +93,7 @@ sh examples/countdown/countdown_ppo_op.sh
 
 ## Evaluation
 
-The results can be found in the checkpoint directory you provided.
+The results can be found in the checkpoint directory.
 
 ### Unsupervised Pre-training & Supervised Fine-tuning
 
