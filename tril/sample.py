@@ -23,7 +23,7 @@ from transformers import (
 
 from tril.utils.countdown_utils import metric_fn
 
-DATA_DIR = "/home/seungyong/train-countdown/stream-of-search/data/b4-rand"
+DATA_DIR = "/home/seungyong/guided-stream-of-search/stream-of-search/data/b4-rand"
 DATA_FILES = {
     "train": "train1_b4_t100_n500000_random.json",
     "val": "val1_b4_t100_n500000_random.json",

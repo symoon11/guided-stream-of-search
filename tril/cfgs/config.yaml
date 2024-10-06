@@ -11,4 +11,4 @@ experiment_name: ${name}-${now:%y%m%d-%H%M%S}
 
 hydra:
   run:
-    dir: /home/seungyong/train-countdown/tril/outputs/${experiment_name}
+    dir: /home/seungyong/guided-stream-of-search/tril/outputs/${experiment_name}

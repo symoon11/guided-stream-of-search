@@ -51,7 +51,7 @@ countdown:
     id: constant
 
   tokenizer:
-    model_name: /home/seungyong/train-countdown/stream-of-search/outputs/gsos3-rand-s0-gpt2/checkpoint-20000
+    model_name: /home/seungyong/guided-stream-of-search/stream-of-search/outputs/gsos3-rand-s0-gpt2/checkpoint-20000
     padding_side: right
     truncation_side: right
     pad_token_as_eos_token: true
@@ -60,7 +60,7 @@ countdown:
     id: actor_critic
     args:
       model_type: causal
-      model_name: /home/seungyong/train-countdown/stream-of-search/outputs/gsos3-rand-s0-gpt2/checkpoint-20000
+      model_name: /home/seungyong/guided-stream-of-search/stream-of-search/outputs/gsos3-rand-s0-gpt2/checkpoint-20000
       max_prompt_len: ${sampling.max_prompt_len}
       max_gen_len: ${sampling.max_gen_len}
       create_reference: true

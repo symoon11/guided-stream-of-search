@@ -2,7 +2,7 @@
 
 cd src
 
-ckpt="/home/seungyong/train-countdown/stream-of-search/outputs/gsos1-last-s0-gpt2/checkpoint-20000"
+ckpt="/home/seungyong/guided-stream-of-search/stream-of-search/outputs/gsos1-last-s0-gpt2/checkpoint-20000"
 
 python sample.py --ckpt "$ckpt" --seed 0 $@
 python augment.py --ckpt "$ckpt" --seed 0 --mode last --depth 1 $@

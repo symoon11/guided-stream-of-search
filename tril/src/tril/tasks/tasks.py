@@ -285,7 +285,7 @@ class IMDBForSeq2Seq(BaseTask):
 class Countdown(BaseTask):
     @classmethod
     def prepare(cls, split: str, n_samples: Dict[str, int] = {"val": 100, "test": 100}):
-        data_dir = "/home/seungyong/train-countdown/stream-of-search/data/b4-rand"
+        data_dir = "/home/seungyong/guided-stream-of-search/stream-of-search/data/b4-rand"
         data_files = {
             "train": "train1_b4_t100_n500000_random.json",
             "val": "val1_b4_t100_n500000_random.json",
