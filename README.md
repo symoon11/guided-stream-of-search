@@ -1,6 +1,6 @@
 # Guided Stream of Search
 
-This is the code for the paper [Guided Stream of Search: Learning to Better Search with Language Models via Optimal Path Guidance]().
+This is the code for the paper [Guided Stream of Search: Learning to Better Search with Language Models via Optimal Path Guidance](https://arxiv.org/abs/2410.02992).
 
 <img src="figures/gsos.png" width="800">
 
@@ -79,7 +79,7 @@ sh script/gpt2/iter3/train_gsos_rand_s0.sh
 ```
 
 > [!NOTE]  
-> The data generation process requires a large number of GPUs. It is recommended to use over 40 RTX 3090 GPUs and run the scripts in parallel.
+> The data generation process requires a large number of GPUs. It is recommended to use over 40 NVIDIA RTX 3090 GPUs and run the scripts in parallel.
 
 ## RL fine-tuning
 
@@ -120,6 +120,8 @@ python summary.py --ckpt {ckpt}
 ```
 
 ## Acknowledgements
+
+This repository is based on the following repositories with some modifications.
 
 - https://github.com/kanishkg/stream-of-search/
 - https://github.com/Cornell-RL/tril
