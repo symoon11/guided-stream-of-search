@@ -95,7 +95,7 @@ sh examples/countdown/countdown_ppo_op.sh
 
 The results are saved in the provided checkpoint directory.
 
-### Unsupervised Pre-training & Supervised Fine-tuning
+### Unsupervised pre-training & supervised fine-tuning
 
 ```bash
 conda activate countdown
@@ -131,7 +131,7 @@ Checkpoints used in the paper can be found in the following links:
 
 ## Acknowledgements
 
-This repository is based on the following repositories with some modifications.
+This repository is built on the following repositories with some modifications. The specific changes we made are detailed in the README file of each directory.
 
 - https://github.com/kanishkg/stream-of-search/
 - https://github.com/Cornell-RL/tril
