@@ -31,7 +31,7 @@ pip install flash-attn --no-build-isolation
 
 ## Data generation
 
-The data can be found in `/home/{user}/guided-stream-of-search/stream-of-search/data`.
+The datasets are saved in `/home/{user}/guided-stream-of-search/stream-of-search/data`.
 
 ```bash
 conda activate countdown
@@ -42,7 +42,7 @@ sh script/task/gen_task_final.sh  # Evaluation
 
 ## Unsupervised pre-training
 
-The checkpoint can be found in `/home/{user}/guided-stream-of-search/stream-of-search/output`.
+The checkpoint is saved in `/home/{user}/guided-stream-of-search/stream-of-search/output`.
 
 ```bash
 conda activate countdown
@@ -52,7 +52,7 @@ sh script/gpt2/train_sos.sh
 
 ## Supervised fine-tuning with self-generated data
 
-The data and checkpoints can be found in `/home/{user}/guided-stream-of-search/stream-of-search/output`.
+The data and checkpoints are saved in `/home/{user}/guided-stream-of-search/stream-of-search/output`.
 
 ```bash
 conda activate countdown
@@ -83,7 +83,7 @@ sh script/gpt2/iter3/train_gsos_rand_s0.sh
 
 ## RL fine-tuning
 
-The checkpoints can be found in `/home/{user}/guided-stream-of-search/tril/output`.
+The checkpoint is saved in `/home/{user}/guided-stream-of-search/tril/output`.
 
 ```bash
 conda activate countdown
@@ -93,7 +93,7 @@ sh examples/countdown/countdown_ppo_op.sh
 
 ## Evaluation
 
-The results can be found in the checkpoint directory.
+The results are saved in the provided checkpoint directory.
 
 ### Unsupervised Pre-training & Supervised Fine-tuning
 
@@ -104,7 +104,7 @@ python eval.py --ckpt {ckpt} --start 0
 ...
 python eval.py --ckpt {ckpt} --start 10000
 cd ..
-python summary.py --ckpt {ckpt} 
+python summary.py --ckpt {ckpt}
 ```
 
 ### RL fine-tuning
@@ -116,8 +116,18 @@ python eval.py --ckpt {ckpt} --start 0
 ...
 python eval.py --ckpt {ckpt} --start 10000
 cd ..
-python summary.py --ckpt {ckpt} 
+python summary.py --ckpt {ckpt}
 ```
+
+## Checkpoints
+
+Checkpoints used in the paper can be found in the following links:
+
+- SoS: https://drive.google.com/drive/folders/1oaOYoUcNMNVIpX9MhUS6ZQWBBZPrj6cW?usp=drive_link
+- SoS+STaR: https://drive.google.com/drive/folders/1uoOJGfUCDjT6CKsTdsh5m1OTFBikBMUc?usp=drive_link
+- SoS+PPO: https://drive.google.com/drive/folders/1GcxQ4Z7bUFHSp8A4jhJLrT56U4Wlda2Y?usp=drive_link
+- GSoS: https://drive.google.com/drive/folders/1MMeBmyFPdYVgEQFCpBDOqerLuw-JKclt?usp=drive_link
+- GSoS+PPO: https://drive.google.com/drive/folders/1FttFIgHrXWIJbX5VbN5gOOEtlz03Q_ve?usp=drive_link
 
 ## Acknowledgements
 
