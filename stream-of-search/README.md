@@ -79,3 +79,27 @@ This repository is structured to support efficient development, training, and ev
 - `countdown_generate.py`: Generates countdown dataset.
 - `countdown_optimal.py`: Enriches countdown dataset with optimal paths.
 - `eval_neo.py`: Script for model evaluation.
+
+## Changes to the origianl implementation
+
+1. The original BFS implementation visits leaf nodes even after their verification is complete, which is inconsistent with DFS behavior. We modify the code so that leaf nodes are not pushed to the queue (see lines 91-94 in `src/countdown_bfs.py`)
+
+
+```python
+for node_tuple in generated_nodes:
+    node = node_tuple[-1]
+    # heapq.heappush(open_set, node_tuple)
+    if len(node.nums) > 1:
+        heapq.heappush(open_set, node_tuple)
+```
+
+2. The original implementation for converting optimal solutions to paths incorrectly parses operations with inputs that contain duplicates, removing all instances of a duplicate even if only one is required for arithmetic operations. We modify the code to correctly handle duplicates (see lines 89-93 in `src/countdown.py`).
+
+``` python
+result = int(result)
+# new_nums = [int(nums[k]) for k in range(len(nums)) if nums[k] != i and nums[k] != j] + [result]
+new_nums = nums.copy()
+new_nums.remove(i)
+new_nums.remove(j)
+new_nums = [int(num) for num in new_nums] + [result]
+```

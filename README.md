@@ -102,7 +102,7 @@ conda activate countdown
 cd stream-of-search
 python eval.py --ckpt {ckpt} --start 0
 ...
-python eval.py --ckpt {ckpt} --start 10000
+python eval.py --ckpt {ckpt} --start 9000
 cd ..
 python summary.py --ckpt {ckpt}
 ```
@@ -114,7 +114,7 @@ conda activate countdown
 cd tril
 python eval.py --ckpt {ckpt} --start 0
 ...
-python eval.py --ckpt {ckpt} --start 10000
+python eval.py --ckpt {ckpt} --start 9000
 cd ..
 python summary.py --ckpt {ckpt}
 ```
