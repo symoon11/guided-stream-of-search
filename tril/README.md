@@ -199,3 +199,69 @@ Here is the citation of the accompanying paper for many of the supported algorit
 
 ## Acknowledgements
 We would like to acknowledge [RL4LMs](https://github.com/allenai/RL4LMs), [TRL](https://github.com/huggingface/trl), and [TRLx](https://github.com/CarperAI/trlx) for being inspirations for this library.
+
+
+## Changes to the original implementation
+
+1. The original implementation always passes a gradient accumulation step of 1 to the DeepSpeed plugin, disregarding the intended configuration. We modify the code to ensure the correct value is passed. Please refer to line 21 in `accelerate_cfgs/zero_stage_2_config.json` and lines 251-258 in `src/tril/algorithms/base_online.py` for details.
+
+```json
+"train_batch_size": "auto",
+"train_micro_batch_size_per_gpu": "auto",
+// "gradient_accumulation_steps": 1,
+"gradient_accumulation_steps": "auto",
+"gradient_clipping": "auto",
+```
+
+```python
+# (
+#     self.agent,
+#     self.optimizer,
+#     self.scheduler,
+#     self.dataloaders["val"],
+#     self.dataloaders["test"],
+#     self.prompt_loader,
+# ) = self.accelerator.prepare(
+#     self.agent,
+#     self.optimizer,
+#     self.scheduler,
+#     self.dataloaders["val"],
+#     self.dataloaders["test"],
+#     self.prompt_loader,
+# )
+self.agent, self.optimizer, self.scheduler, self.buffer_dataloader = (
+    self.accelerator.prepare(
+        self.agent,
+        self.optimizer,
+        self.scheduler,
+        self.buffer_dataloader,
+    )
+)
+```
+
+2. The original implementation updates the policy and value networks simultaneously using a single optimizer, which hinders gradient clipping as larger gradients overshadow the smaller ones. We modified the code to optimize the networks separately. Please refer to `src/tril/algorithms/ppo.py` for details.
+
+```python
+# loss = (
+#     policy_loss
+#     + self.ent_coef * entropy_loss
+#     + self.vf_coef * value_loss
+#     + self.target_coef * target_loss
+# )
+# self.accelerator.backward(loss)
+# self.optimizer.step()
+# self.optimizer.zero_grad()
+loss = (
+    policy_loss
+    + self.ent_coef * entropy_loss
+    + self.target_coef * target_loss
+)
+self.accelerator.backward(loss)
+self.optimizer.step()
+self.optimizer.zero_grad()
+...
+loss = self.vf_coef * value_loss
+self.accelerator.backward(loss)
+self.optimizer.step()
+self.optimizer.zero_grad()
+```
